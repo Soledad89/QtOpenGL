@@ -45,9 +45,10 @@
 
 QT_BEGIN_NAMESPACE
 class QSlider;
+
 QT_END_NAMESPACE
 //! [0]
-class GLWidget;
+class My_GLWidget;
 
 class Window : public QWidget
 {
@@ -62,7 +63,7 @@ protected:
 private:
     QSlider *createSlider();
 
-    GLWidget *glWidget;
+    My_GLWidget *glWidget;
     QSlider *xSlider;
     QSlider *ySlider;
     QSlider *zSlider;

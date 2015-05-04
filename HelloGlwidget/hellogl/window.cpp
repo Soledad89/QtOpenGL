@@ -40,13 +40,13 @@
 
 #include <QtGui>
 
-#include "glwidget.h"
+#include "my_glwidget.h"
 #include "window.h"
 
 //! [0]
 Window::Window()
 {
-    glWidget = new GLWidget;
+    glWidget = new My_GLWidget;
 
     xSlider = createSlider();
     ySlider = createSlider();

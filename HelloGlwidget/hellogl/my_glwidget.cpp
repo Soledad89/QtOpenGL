@@ -43,7 +43,7 @@
 
 #include <math.h>
 
-#include "glwidget.h"
+#include "my_glwidget.h"
 #include "qtlogo.h"
 
 #ifndef GL_MULTISAMPLE
@@ -51,7 +51,7 @@
 #endif
 
 //! [0]
-GLWidget::GLWidget(QWidget *parent)
+My_GLWidget::My_GLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
     logo = 0;
@@ -65,20 +65,20 @@ GLWidget::GLWidget(QWidget *parent)
 //! [0]
 
 //! [1]
-GLWidget::~GLWidget()
+My_GLWidget::~My_GLWidget()
 {
 }
 //! [1]
 
 //! [2]
-QSize GLWidget::minimumSizeHint() const
+QSize My_GLWidget::minimumSizeHint() const
 {
     return QSize(50, 50);
 }
 //! [2]
 
 //! [3]
-QSize GLWidget::sizeHint() const
+QSize My_GLWidget::sizeHint() const
 //! [3] //! [4]
 {
     return QSize(400, 400);
@@ -94,7 +94,7 @@ static void qNormalizeAngle(int &angle)
 }
 
 //! [5]
-void GLWidget::setXRotation(int angle)
+void My_GLWidget::setXRotation(int angle)
 {
     qNormalizeAngle(angle);
     if (angle != xRot) {
@@ -105,7 +105,7 @@ void GLWidget::setXRotation(int angle)
 }
 //! [5]
 
-void GLWidget::setYRotation(int angle)
+void My_GLWidget::setYRotation(int angle)
 {
     qNormalizeAngle(angle);
     if (angle != yRot) {
@@ -115,7 +115,7 @@ void GLWidget::setYRotation(int angle)
     }
 }
 
-void GLWidget::setZRotation(int angle)
+void My_GLWidget::setZRotation(int angle)
 {
     qNormalizeAngle(angle);
     if (angle != zRot) {
@@ -126,7 +126,7 @@ void GLWidget::setZRotation(int angle)
 }
 
 //! [6]
-void GLWidget::initializeGL()
+void My_GLWidget::initializeGL()
 {
     qglClearColor(qtPurple.dark());
 
@@ -145,7 +145,7 @@ void GLWidget::initializeGL()
 //! [6]
 
 //! [7]
-void GLWidget::paintGL()
+void My_GLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
@@ -158,7 +158,7 @@ void GLWidget::paintGL()
 //! [7]
 
 //! [8]
-void GLWidget::resizeGL(int width, int height)
+void My_GLWidget::resizeGL(int width, int height)
 {
     int side = qMin(width, height);
     glViewport((width - side) / 2, (height - side) / 2, side, side);
@@ -175,14 +175,14 @@ void GLWidget::resizeGL(int width, int height)
 //! [8]
 
 //! [9]
-void GLWidget::mousePressEvent(QMouseEvent *event)
+void My_GLWidget::mousePressEvent(QMouseEvent *event)
 {
     lastPos = event->pos();
 }
 //! [9]
 
 //! [10]
-void GLWidget::mouseMoveEvent(QMouseEvent *event)
+void My_GLWidget::mouseMoveEvent(QMouseEvent *event)
 {
     int dx = event->x() - lastPos.x();
     int dy = event->y() - lastPos.y();

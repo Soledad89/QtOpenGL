@@ -38,21 +38,21 @@
 **
 ****************************************************************************/
 
-#ifndef GLWIDGET_H
-#define GLWIDGET_H
+#ifndef MY_GLWIDGET_H
+#define MY_GLWIDGET_H
 
 #include <QGLWidget>
 
 class QtLogo;
 
 //! [0]
-class GLWidget : public QGLWidget
+class My_GLWidget : public QGLWidget
 {
     Q_OBJECT
 
 public:
-    GLWidget(QWidget *parent = 0);
-    ~GLWidget();
+    My_GLWidget(QWidget *parent = 0);
+    ~My_GLWidget();
 
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
