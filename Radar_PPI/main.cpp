@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QTextCodec::setCodecForTr(QTextCodec::codecForLocale());
     qApp->addLibraryPath("plugins");
     
-    Radar_PPI radar;
+    Radar_PPI radar(30); //刷新间隔
     radar.show();
 
 

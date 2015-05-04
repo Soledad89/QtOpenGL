@@ -1,11 +1,17 @@
 #include "radar_ppi.h"
 #include <GL/glu.h>
+#include <GL/glut.h>
+
+#define PI 3.1416
+#define DELTA_TRANGLE 0.08789
+#define NUM_TRANGLE  64
 
 Radar_PPI::Radar_PPI(int timerInterval, QWidget *parent)
     : GLWidget(timerInterval, parent)
 {
+    dx = 0.0f;
     setWindowTitle(tr("Radar PPI Display"));
-    //showMaximized();
+    setFixedSize(1024,1024);
     QIcon icon("apple.jpg");
     setWindowIcon(icon);
 }
@@ -22,13 +28,7 @@ void Radar_PPI::initializeGL()
 
 void Radar_PPI::resizeGL(int width, int height)
 {
-    height = height?height:1;
     glViewport( 0, 0, (GLint)width, (GLint)height );
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(45.0f,(GLfloat)width/(GLfloat)height,0.1f,100.0f);
-
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
@@ -37,22 +37,81 @@ void Radar_PPI::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除屏幕和深度缓存
     glLoadIdentity(); // 重置当前的模型观察矩阵
+    glColor3f(0.0f, 1.0f, 0.0f);
+    //打开抗锯齿，并提示尽可能进行最佳的处理
+         glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+         glEnable(GL_BLEND);
+         glEnable(GL_POINT_SMOOTH);
+         glHint(GL_POINT_SMOOTH_HINT,GL_NICEST);
+         glEnable(GL_LINE_SMOOTH);
+         glHint(GL_LINE_SMOOTH_HINT,GL_NICEST);
+         glEnable(GL_POLYGON_SMOOTH);
+         glHint(GL_POLYGON_SMOOTH_HINT,GL_NICEST);
+         glLineWidth(1.0);    //设置线宽
+         glPointSize(10.0);    //设置点的大小
 
-    glTranslatef(-1.5f,0.0f,-5.0f); // 相对当前所在的屏幕位置移动
-    glBegin(GL_TRIANGLES); // 开始绘制三角形
-    glVertex3f( 0.0f, 1.0f, 0.0f); // 上顶点
-    glVertex3f(-1.0f,-1.0f, 0.0f); // 左下顶点
-    glVertex3f( 1.0f,-1.0f, 0.0f); // 右下顶点
-    glEnd(); // 三角形绘制结束
+    glColor3f(0.0f, 1.0f, 0.0f);
+    //绘制圆心
+    glBegin(GL_POINTS);
+    glVertex2f(0.0f, 0.0f);
+    glEnd();
+    //绘制大圈
+    float angle;
+    for (angle = 0; angle <= PI * 2.0; angle += 0.0785*1.5f)
+    {
+        float x, y;
+        x = sin(angle);
+        y = cos(angle);
+        glBegin(GL_LINE_LOOP);
+        glVertex2f(x, y);
+    }
+    glEnd();
+    //绘制中圈
+    for (angle = 0; angle <= PI * 2.0; angle +=  0.0785*1.5f)
+    {
+        float x, y;
+        x = 0.6f * sin(angle);
+        y = 0.6f * cos(angle);
+        glBegin(GL_LINE_LOOP);
+        glVertex2f(x, y);
+    }
+    glEnd();
+    //绘制小圈
+    for (angle = 0; angle <= PI * 2.0; angle +=  0.0785*1.5f)
+    {
+        float x, y;
+        x = 0.3f * sin(angle);
+        y = 0.3f * cos(angle);
+        glBegin(GL_LINE_LOOP);
+        glVertex2f(x, y);
+    }
+    glEnd();
 
-    /* 使用顺时针次序画正方形(左上->右上->右下->左下), 采用顺时针绘制的
-       是对象的后表面.
-     */
-    glTranslatef(3.0f,0.0f,0.0f); // 向x轴正方向移动3个单位
-    glBegin(GL_QUADS); // 开始绘制四边形
-    glVertex3f(-1.0f, 1.0f, 0.0f); // 左上顶点
-    glVertex3f( 1.0f, 1.0f, 0.0f); // 右上顶点
-    glVertex3f( 1.0f,-1.0f, 0.0f); // 右下顶点
-    glVertex3f(-1.0f,-1.0f, 0.0f); // 左下顶点
-    glEnd(); // 四边形绘制结束
+    //绘制一个扇区及扫描线
+    glLineWidth(1.0f);
+    glColor3f(1.0f, 1.0f, 1.0f);
+    float p, q;
+    int nTrangle = 4096 / NUM_TRANGLE; //512个扇区， 每个扇区32条线
+    for ( int i = 0; i < nTrangle; i++)
+    {
+        for ( int j = 0; j < NUM_TRANGLE; j++)
+        {
+            float a = dx + j * DELTA_TRANGLE / 360;
+            p = sin(a);// 转换为查表法???????????????????????????????????????/
+            q = cos(a);
+            glBegin(GL_LINES);
+            glVertex2f(0.0f, 0.0f);
+            glVertex2f(p, q);
+            glEnd();
+        }
+    }
+
+}
+
+void Radar_PPI::timeOut()
+{
+    dx  += DELTA_TRANGLE * NUM_TRANGLE / 360;
+    if (dx > 2.0 * PI)
+        dx = 0.0f;
+    updateGL();
 }
