@@ -1,6 +1,6 @@
 /*
-变形和从文件中加载3D物体:
-从文件加载3D模型，并且平滑的从一个模型变换为另一个模型。
+锟斤拷锟轿和达拷锟侥硷拷锟叫硷拷锟斤拷3D锟斤拷锟斤拷:
+锟斤拷锟侥硷拷锟斤拷锟斤拷3D模锟酵ｏ拷锟斤拷锟斤拷平锟斤拷锟侥达拷一锟斤拷模锟酵变换为锟斤拷一锟斤拷模锟酵★拷
  */
 
 #ifndef GLWIDGET25_H
@@ -15,8 +15,8 @@ struct Vertex1
 
 struct Object1
 {
-    int verts; // 物体中顶点的个数
-    Vertex1 *points; // 包含顶点数据的指针
+    int verts; // 锟斤拷锟斤拷锟叫讹拷锟斤拷锟侥革拷锟斤拷
+    Vertex1 *points; // 锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟捷碉拷指锟斤拷
 };
 
 class GLWidget25 : public GLWidget
@@ -41,13 +41,13 @@ protected:
 private:
     GLfloat scaling;
     QPoint lastPos;
-    GLfloat xrot, yrot, zrot; // 旋转角度
-    GLfloat xspeed, yspeed, zspeed; // 旋转速度
-    GLfloat cx, cy, cz; // 物体位置
-    int key; // 物体标识符
-    int step, steps; // 变换的步数
-    bool morph; // 是否使用变形
-    int maxVertices; // 最大定点数
+    GLfloat xrot, yrot, zrot; // 锟斤拷转锟角讹拷
+    GLfloat xspeed, yspeed, zspeed; // 锟斤拷转锟劫讹拷
+    GLfloat cx, cy, cz; // 锟斤拷锟斤拷位锟斤拷
+    int key; // 锟斤拷锟斤拷锟斤拷识锟斤拷
+    int step, steps; // 锟戒换锟侥诧拷锟斤拷
+    bool morph; // 锟角凤拷使锟矫憋拷锟斤拷
+    int maxVertices; // 锟斤拷锟襟定碉拷锟斤拷
     Object1 morph1, morph2, morph3, morph4;
     Object1 helper, *sour, *dest;
 };
