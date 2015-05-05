@@ -12,10 +12,13 @@ protected:
     virtual void initializeGL();
     virtual void resizeGL( int width, int height );
     virtual void paintGL();
-     virtual void timeOut();
+    virtual void timeOut();
 
 private:
     float dx;
+    float d_angle;
+    float d_scanangle;
+
 };
 
 #endif // Radar_PPI_H

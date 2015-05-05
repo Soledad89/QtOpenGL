@@ -2,18 +2,27 @@
 #include <GL/glu.h>
 #include <GL/glut.h>
 
-#define PI 3.1416
-#define DELTA_TRANGLE 0.08789
-#define NUM_TRANGLE  64
+#include <stdio.h>
+#include "global.h"
+s_ppi_video_for_disp dispFilePkg[DISP_BUF_NUM]; //数据量太大，debug段错误，全局变量不容易出错
+FILE * rpkgfp;
+
+bool radarDataInput(char * filename);
 
 Radar_PPI::Radar_PPI(int timerInterval, QWidget *parent)
     : GLWidget(timerInterval, parent)
 {
+    char* filename1 = "/home/soledad/scripts/Qt_OpenGl/Radar_PPI/radar1";
+    if ( !radarDataInput(filename1)){
+        printf("Data Input error");
+        exit(0);
+    }
+
+    d_scanangle = 180.0f;
+    d_angle = 180.0f;
     dx = 0.0f;
     setWindowTitle(tr("Radar PPI Display"));
-    setFixedSize(1024,1024);
-    QIcon icon("apple.jpg");
-    setWindowIcon(icon);
+    setFixedSize(1200,1200);
 }
 
 void Radar_PPI::initializeGL()
@@ -57,7 +66,7 @@ void Radar_PPI::paintGL()
     glEnd();
     //绘制大圈
     float angle;
-    for (angle = 0; angle <= PI * 2.0; angle += 0.0785*1.5f)
+    for (angle = 0; angle <= PI * 2.0; angle += 0.0785f)
     {
         float x, y;
         x = sin(angle);
@@ -66,43 +75,67 @@ void Radar_PPI::paintGL()
         glVertex2f(x, y);
     }
     glEnd();
-    //绘制中圈
-    for (angle = 0; angle <= PI * 2.0; angle +=  0.0785*1.5f)
-    {
-        float x, y;
-        x = 0.6f * sin(angle);
-        y = 0.6f * cos(angle);
-        glBegin(GL_LINE_LOOP);
-        glVertex2f(x, y);
-    }
-    glEnd();
-    //绘制小圈
-    for (angle = 0; angle <= PI * 2.0; angle +=  0.0785*1.5f)
-    {
-        float x, y;
-        x = 0.3f * sin(angle);
-        y = 0.3f * cos(angle);
-        glBegin(GL_LINE_LOOP);
-        glVertex2f(x, y);
-    }
-    glEnd();
+//    //绘制中圈
+//    for (angle = 0; angle <= PI * 2.0; angle +=  0.0785*1.5f)
+//    {
+//        float x, y;
+//        x = 0.6f * sin(angle);
+//        y = 0.6f * cos(angle);
+//        glBegin(GL_LINE_LOOP);
+//        glVertex2f(x, y);
+//    }
+//    glEnd();
+//    //绘制小圈
+//    for (angle = 0; angle <= PI * 2.0; angle +=  0.0785*1.5f)
+//    {
+//        float x, y;
+//        x = 0.3f * sin(angle);
+//        y = 0.3f * cos(angle);
+//        glBegin(GL_LINE_LOOP);
+//        glVertex2f(x, y);
+//    }
+//    glEnd();
 
-    //绘制一个扇区及扫描线
-    glLineWidth(1.0f);
-    glColor3f(1.0f, 1.0f, 1.0f);
-    float p, q;
-    int nTrangle = 4096 / NUM_TRANGLE; //512个扇区， 每个扇区32条线
-    for ( int i = 0; i < nTrangle; i++)
+//    //绘制一个扇区及扫描线
+//    glLineWidth(1.0f);
+//    glColor3f(1.0f, 1.0f, 1.0f);
+//    float p, q;
+//    int nTrangle = 4096 / NUM_TRANGLE; //512个扇区， 每个扇区32条线
+//    for ( int i = 0; i < nTrangle; i++)
+//    {
+//        for ( int j = 0; j < NUM_TRANGLE; j++)
+//        {
+//            float a = dx + j * DELTA_TRANGLE / 360;
+//            p = sin(a);// 转换为查表法???????????????????????????????????????/
+//            q = cos(a);
+//            glBegin(GL_LINES);
+//            glVertex2f(0.0f, 0.0f);
+//            glVertex2f(p, q);
+//            glEnd();
+//        }
+//    }
+
+
+    for (float i = 0.0f; i >= -d_scanangle; i -= 0.1f)
     {
-        for ( int j = 0; j < NUM_TRANGLE; j++)
+        glColor3f(1.0+i/d_scanangle, 1.0+i/d_scanangle, 1.0+i/d_scanangle);
+        glBegin(GL_LINES);
+        glVertex3f(0.0f, 0.0f, 0.0f);
+        glVertex3f(cos(PI*(d_angle - i)/ 180.0),  sin(PI*(d_angle-i) / 180.0), 0.0f);
+        glEnd();
+    }
+
+    for (int i = 0; i < 360; i++)
+    {
+        for (int j = 0; j < 12; j ++)
         {
-            float a = dx + j * DELTA_TRANGLE / 360;
-            p = sin(a);// 转换为查表法???????????????????????????????????????/
-            q = cos(a);
-            glBegin(GL_LINES);
-            glVertex2f(0.0f, 0.0f);
-            glVertex2f(p, q);
-            glEnd();
+            for ( int k = 0; k < 600; k++)
+            {
+                glColor3f(1.0 - i/360, 1.0 - i/360, 1.0 - i/360);
+                glBegin(GL_POINTS);
+                glVertex3f(0.5f, 0.5f, 0.0f);
+                glEnd();
+            }
         }
     }
 
@@ -110,8 +143,32 @@ void Radar_PPI::paintGL()
 
 void Radar_PPI::timeOut()
 {
+    d_angle -= 4.5f;
+    if (d_angle >= 360.0f)
+        d_angle = 0.0f;
     dx  += DELTA_TRANGLE * NUM_TRANGLE / 360;
     if (dx > 2.0 * PI)
         dx = 0.0f;
     updateGL();
+}
+
+bool radarDataInput(char * filename)
+{
+    rpkgfp = NULL;
+    if( (rpkgfp = fopen(filename,"r")) == NULL ){
+            printf("error open pkg file!\n");
+            return false;
+            }
+    memset(dispFilePkg, 0, sizeof(s_ppi_video_for_disp)* DISP_BUF_NUM);
+    s_ppi_video_for_disp * dispbuf = dispFilePkg;
+    if (!dispbuf) return false;
+
+    size_t result = fread(dispbuf, sizeof(s_ppi_video_for_disp), DISP_BUF_NUM, rpkgfp);
+
+    if (result != DISP_BUF_NUM) {
+            printf ("Reading error!\n");
+            return false;
+    }
+    return true;
+
 }

@@ -10,11 +10,12 @@ QT += opengl
 
 # Input
 HEADERS += glwidget.h \
-           radar_ppi.h 
+           radar_ppi.h \ 
+    global.h
 SOURCES += glwidget.cpp \
            radar_ppi.cpp \
            main.cpp
-RESOURCES += Radar_PPI.qrc
+RESOURCES +=
 
 DESTDIR = ./
 LIBS += -lGLU
