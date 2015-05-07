@@ -1,7 +1,7 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-#define DISP_BUF_NUM 16 * 4  /*值越大转的越快*/
+#define DISP_BUF_NUM 16 * 2  /*值越大转的越快*/
 #define CNTVIDEO 4*512
 #define PI 3.1416
 #define DELTA_TRANGLE 0.08789

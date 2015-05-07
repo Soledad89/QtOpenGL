@@ -92,6 +92,7 @@ void Radar_PPI::paintGL()
     if (result != DISP_BUF_NUM) {
         fclose(datafile_header);
         radarDataInput(filename1);
+        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
         step = 0;
     }
 
@@ -107,32 +108,43 @@ void Radar_PPI::paintGL()
             y = cos(angle_i) * j / 600.0;
 
             Point3i point;
-            point.index = dispFilePkg[i - step].znum;
+            //point.index = dispFilePkg[i - step].znum;
+            point.index = i;
             point.x = x;
             point.y = y;
 
             int brightness;
             //int layer;
             brightness = dispFilePkg[i - step].videodata[j];
-            if (brightness > 215)
+            if (brightness > 200)
                  bitplane[0].push_back(point);
             else
-                if (brightness > 190)
+                if (brightness > 120)
                      bitplane[1].push_back(point);
 
         }
     }
 
+    float temp;
     for (int i = 0; i < 2; i++)
     {
         while(!bitplane[i].empty())
         {
            Point3i p;
            p = bitplane[i].front();
-           if ( p.index < step - afterglow_width)
+           temp = p.index;
+           if ( temp < step - afterglow_width )
                bitplane[i].pop_front();
+           else if ( step < temp)
+               {
+                   if ( (temp >= 4096 - afterglow_width) && (4096 - temp >= afterglow_width - step - scan_strip))
+                       bitplane[i].pop_front();
+                   else
+                       break;
+               }
            else
-               break;
+                  break;
+
         }
 
     }
@@ -170,15 +182,16 @@ void Radar_PPI::paintGL()
     }
     glEnd();
 
-
-
+    step += DISP_BUF_NUM;
+    if (step > 4096)
+    {
+        step = 0;
+    }
 }
 
 void Radar_PPI::timeOut()
 {
-    step += DISP_BUF_NUM;
-    if (step >= 4096)
-        step = 0;
+
     updateGL();
 }
 
