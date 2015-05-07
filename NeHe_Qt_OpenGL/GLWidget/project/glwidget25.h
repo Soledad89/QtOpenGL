@@ -1,6 +1,6 @@
 /*
-���κʹ��ļ��м���3D����:
-���ļ�����3Dģ�ͣ�����ƽ���Ĵ�һ��ģ�ͱ任Ϊ��һ��ģ�͡�
+???��??????��???3D????:
+?????????3D????????????????????��??????????
  */
 
 #ifndef GLWIDGET25_H
@@ -15,8 +15,8 @@ struct Vertex1
 
 struct Object1
 {
-    int verts; // �����ж����ĸ���
-    Vertex1 *points; // �����������ݵ�ָ��
+    int verts; // ?????��????????
+    Vertex1 *points; // ????????????????
 };
 
 class GLWidget25 : public GLWidget
@@ -41,13 +41,13 @@ protected:
 private:
     GLfloat scaling;
     QPoint lastPos;
-    GLfloat xrot, yrot, zrot; // ��ת�Ƕ�
-    GLfloat xspeed, yspeed, zspeed; // ��ת�ٶ�
-    GLfloat cx, cy, cz; // ����λ��
-    int key; // ������ʶ��
-    int step, steps; // �任�Ĳ���
-    bool morph; // �Ƿ�ʹ�ñ���
-    int maxVertices; // ���󶨵���
+    GLfloat xrot, yrot, zrot; // ??????
+    GLfloat xspeed, yspeed, zspeed; // ??????
+    GLfloat cx, cy, cz; // ????��??
+    int key; // ?????????
+    int step, steps; // ?��?????
+    bool morph; // ?????????
+    int maxVertices; // ????????
     Object1 morph1, morph2, morph3, morph4;
     Object1 helper, *sour, *dest;
 };

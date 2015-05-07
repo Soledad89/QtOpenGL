@@ -284,7 +284,7 @@ void GLWidget25::keyPressEvent(QKeyEvent *e)
 
 void GLWidget25::timeOut()
 {
-    //updateGL();
+    updateGL();
 }
 
 void GLWidget25::mousePressEvent(QMouseEvent *e)

@@ -15,10 +15,12 @@ protected:
     virtual void timeOut();
 
 private:
-    float dx;
-    float d_angle;
-    float d_scanangle;
 
+    float color_layer[2];
+    int scan_strip;
+    int afterglow_width;
+    int update_strip;
+    int step;
 };
 
 #endif // Radar_PPI_H

@@ -92,8 +92,8 @@ int main(int argc, char *argv[])
 //GLWidget19 widget19(20);
    // widget19.showMaximized();
 
-    GLWidget20 widget20(20);
-    widget20.showMaximized();
+ //   GLWidget20 widget20(20);
+ //   widget20.showMaximized();
 
 //    GLWidget21 widget21(21);
 //    widget21.showMaximized();
@@ -101,11 +101,11 @@ int main(int argc, char *argv[])
  // GLWidget23 widget23(20);
    // widget23.showMaximized();
 
-//   GLWidget24 widget24(20);
-  //  widget24.showMaximized();
+   GLWidget24 widget24(20);
+    widget24.showMaximized();
 
- //   GLWidget25 widget25(20);
- //   widget25.showMaximized();
+  // GLWidget25 widget25(20);
+ //  widget25.showMaximized();
 
  //   GLWidget26 widget26(20);
  //   widget26.showMaximized();
