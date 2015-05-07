@@ -169,28 +169,13 @@ void Radar_PPI::paintGL()
         glVertex2d(vPoint3f_1[i].x, vPoint3f_1[i].y);
     }
     glEnd();
-//    //位平面2
-//    float color_2layer = color_layer[2];
-//    glColor3f(color_2layer, color_2layer, 0.0);
-//    deque<Point3i> vPoint3f_2;
-//    vPoint3f_2 = bitplane[2];
-//    for (int i = 0; i < vPoint3f_2.size(); i++)
-//    {
-//        glVertex2d(vPoint3f_2[i].x, vPoint3f_2[i].y);
-//    }
-//    glEnd();
+
 
 
 }
 
 void Radar_PPI::timeOut()
 {
-//    d_angle -= 4.5f;
-//    if (d_angle >= 360.0f)
-//        d_angle = 0.0f;
-//    dx  += DELTA_TRANGLE * NUM_TRANGLE / 360;
-//    if (dx > 2.0 * PI)
-//        dx = 0.0f;
     step += DISP_BUF_NUM;
     if (step >= 4096)
         step = 0;
