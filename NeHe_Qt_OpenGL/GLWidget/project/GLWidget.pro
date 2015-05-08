@@ -64,7 +64,7 @@ RC_FILE = GLWidget.rc # Windows图标用
 
 unix: {#Unix/Linux
     DESTDIR = ../bin/Linux
-    # LIBS += -lGLU
+    LIBS += -lGLU
 }
 
 windows: {#Windows需要链接的库
