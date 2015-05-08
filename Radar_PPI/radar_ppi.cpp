@@ -1,10 +1,13 @@
 
 #ifdef __APPLE__
     #include <GLUT/glut.h> // OS X version of GLUT
+    #define RADA1FILEPATH "/Users/wangbo1/scripts/Qt_OpenGl/Radar_PPI/radar1"
 #elif _WIN32
     #include <GL/glut.h> // Windows FreeGlut equivalent
+    #define RADA1FILEPATH "/home/soledad/scripts/Qt_OpenGl/Radar_PPI/radar1"
 #else
     #include <GL/glut.h> // Windows FreeGlut equivalent
+    #define RADA1FILEPATH "/home/soledad/scripts/Qt_OpenGl/Radar_PPI/radar1"
 #endif
 
 #include <stdio.h>
@@ -19,7 +22,7 @@ using namespace std;
 s_ppi_video_for_disp dispFilePkg[DISP_BUF_NUM];
 FILE * datafile_header;
 s_ppi_video_for_disp * dispbuf = dispFilePkg;
-char* filename1 = "/Users/wangbo1/scripts/Qt_OpenGl/Radar_PPI/radar1";
+char* filename1 = RADA1FILEPATH;
 vector<deque<Point3i> > bitplane(2);
 
 bool radarDataInput(char * filename);

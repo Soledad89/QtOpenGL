@@ -1,11 +1,5 @@
 #include "glwidget9.h"
-#ifdef __APPLE__
-    #include <GLUT/glut.h> // OS X version of GLUT
-#elif _WIN32
-    #include <GL/glut.h> // Windows FreeGlut equivalent
-#else
-    #include <GL/glut.h> // Windows FreeGlut equivalent
-#endif
+#include <GL/glu.h>
 
 GLWidget9::GLWidget9(int timeInterval, QWidget *parent)
     : GLWidget(timeInterval, parent)

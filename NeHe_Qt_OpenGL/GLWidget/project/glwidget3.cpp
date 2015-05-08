@@ -1,5 +1,11 @@
 #include "glwidget3.h"
-#include <GL/glu.h>
+#ifdef __APPLE__
+    #include <GLUT/glut.h> // OS X version of GLUT
+#elif _WIN32
+    #include <GL/glut.h> // Windows FreeGlut equivalent
+#else
+    #include <GL/glut.h> // Windows FreeGlut equivalent
+#endif
 
 GLWidget3::GLWidget3(int timerInterval, QWidget *parent)
     : GLWidget(timerInterval, parent)

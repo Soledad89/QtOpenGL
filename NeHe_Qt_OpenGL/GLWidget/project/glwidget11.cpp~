@@ -1,11 +1,5 @@
 #include <ctime>
-#ifdef __APPLE__
-    #include <GLUT/glut.h> // OS X version of GLUT
-#elif _WIN32
-    #include <GL/glut.h> // Windows FreeGlut equivalent
-#else
-    #include <GL/glut.h> // Windows FreeGlut equivalent
-#endif
+#include <GL/glu.h>
 #include "glwidget11.h"
 
 const float piover180 = 0.0174532925f;

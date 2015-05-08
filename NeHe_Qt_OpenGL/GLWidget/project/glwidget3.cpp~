@@ -1,26 +1,19 @@
-#include "glwidget4.h"
-#ifdef __APPLE__
-    #include <GLUT/glut.h> // OS X version of GLUT
-#elif _WIN32
-    #include <GL/glut.h> // Windows FreeGlut equivalent
-#else
-    #include <GL/glut.h> // Windows FreeGlut equivalent
-#endif
+#include "glwidget3.h"
+#include <GL/glu.h>
 
-GLWidget4::GLWidget4(int timerInterval, QWidget *parent)
+GLWidget3::GLWidget3(int timerInterval, QWidget *parent)
     : GLWidget(timerInterval, parent)
 {
     scaling = 1.0;
     xrot = yrot = zrot = 0.0;
-    rtri = rquad = 0.0f;
 
-    setWindowTitle(tr("旋转"));
-    QIcon icon(":/images/war3.png");
+    setWindowTitle(tr("添加颜色"));
+    QIcon icon(":/images/war2.png");
     setWindowIcon(icon);
     showMaximized();
 }
 
-void GLWidget4::initializeGL()
+void GLWidget3::initializeGL()
 {
     glShadeModel(GL_SMOOTH);
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -30,7 +23,7 @@ void GLWidget4::initializeGL()
     glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 }
 
-void GLWidget4::resizeGL(int width, int height)
+void GLWidget3::resizeGL(int width, int height)
 {
     height = height?height:1;
     glViewport( 0, 0, (GLint)width, (GLint)height );
@@ -43,7 +36,7 @@ void GLWidget4::resizeGL(int width, int height)
     glLoadIdentity();
 }
 
-void GLWidget4::paintGL()
+void GLWidget3::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // 清除屏幕和深度缓存
     glLoadIdentity(); // 重置当前的模型观察矩阵
@@ -54,7 +47,7 @@ void GLWidget4::paintGL()
     glRotatef(xrot, 1.0, 0.0, 0.0);
     glRotatef(yrot, 0.0, 1.0, 0.0);
     glRotatef(zrot, 0.0, 0.0, 1.0);
-    glRotatef(rtri, 0.0f, 1.0f, 0.0f); // 绕y轴从左向右旋转三角形
+
     glBegin(GL_TRIANGLES); // 开始绘制三角形
     glColor3f(1.0f, 0.0f, 0.0f); // 红色
     glVertex3f( 0.0f, 1.0f, 0.0f); // 上顶点
@@ -67,34 +60,23 @@ void GLWidget4::paintGL()
     /* 使用顺时针次序画正方形(左上->右上->右下->左下), 采用顺时针绘制的
        是对象的后表面.
      */
-    // 四边形采用平面着色        
-    glLoadIdentity(); // 重置模型观察矩阵
-    glTranslatef(1.5f,0.0f,-6.0f); // 右移1.5单位，并移入屏幕6.0单位
+    // 四边形采用平面着色
+    glTranslatef(3.0f,0.0f,0.0f); // 向x轴正方向移动3个单位
     glScalef(scaling, scaling, scaling);
     glRotatef(xrot, 1.0, 0.0, 0.0);
     glRotatef(yrot, 0.0, 1.0, 0.0);
     glRotatef(zrot, 0.0, 0.0, 1.0);
-    glRotatef(rquad, 1.0f, 0.0f, 0.0f);    
-    glBegin(GL_QUADS); // 开始绘制四边形    
+
     glColor3f(0.5f, 0.5f, 1.0f);
+    glBegin(GL_QUADS); // 开始绘制四边形
     glVertex3f(-1.0f, 1.0f, 0.0f); // 左上顶点
-    glColor3f(0.1f, 0.2f, 0.3f);
     glVertex3f( 1.0f, 1.0f, 0.0f); // 右上顶点
-    glColor3f(0.2f, 0.3f, 0.4f);
     glVertex3f( 1.0f,-1.0f, 0.0f); // 右下顶点
-    glColor3f(0.4f, 0.1f, 0.3f);
     glVertex3f(-1.0f,-1.0f, 0.0f); // 左下顶点
     glEnd(); // 四边形绘制结束
 }
 
-void GLWidget4::timeOut()
-{
-    rtri += 0.5f;
-    rquad -= 0.25f;
-    updateGL();
-}
-
-void GLWidget4::keyPressEvent(QKeyEvent *e)
+void GLWidget3::keyPressEvent(QKeyEvent *e)
 {
     switch (e->key()) {
     case Qt::Key_F11:
@@ -108,12 +90,12 @@ void GLWidget4::keyPressEvent(QKeyEvent *e)
     }
 }
 
-void GLWidget4::mousePressEvent(QMouseEvent *e)
+void GLWidget3::mousePressEvent(QMouseEvent *e)
 {
     lastPos = e->pos();
 }
 
-void GLWidget4::mouseMoveEvent(QMouseEvent *e)
+void GLWidget3::mouseMoveEvent(QMouseEvent *e)
 {
     GLfloat dx = GLfloat(e->x() - lastPos.x()) / width();
     GLfloat dy = GLfloat(e->y() - lastPos.y()) / height();
@@ -129,7 +111,7 @@ void GLWidget4::mouseMoveEvent(QMouseEvent *e)
     lastPos = e->pos();
 }
 
-void GLWidget4::wheelEvent(QWheelEvent *e)
+void GLWidget3::wheelEvent(QWheelEvent *e)
 {
     double numDegrees = -e->delta() / 8.0;
     double numSteps = numDegrees / 15.0;
