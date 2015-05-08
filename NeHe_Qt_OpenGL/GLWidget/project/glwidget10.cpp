@@ -1,6 +1,14 @@
 #include <ctime>
-#include <GL/glu.h>
+
 #include "glwidget10.h"
+
+#ifdef __APPLE__
+    #include <OpenGL/glu.h>
+#elif _WIN32
+    #include <GL/glu.h>
+#else
+    #include <GL/glu.h>
+#endif
 
 const float piover180 = 0.0174532925f;
 

@@ -18,5 +18,5 @@ SOURCES += glwidget.cpp \
 RESOURCES +=
 
 DESTDIR = ./
-LIBS += -lGLU
+# LIBS += -lGLU
 

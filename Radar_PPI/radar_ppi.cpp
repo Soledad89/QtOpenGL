@@ -1,5 +1,12 @@
-#include <GL/glu.h>
-#include <GL/glut.h>
+
+#ifdef __APPLE__
+    #include <GLUT/glut.h> // OS X version of GLUT
+#elif _WIN32
+    #include <GL/glut.h> // Windows FreeGlut equivalent
+#else
+    #include <GL/glut.h> // Windows FreeGlut equivalent
+#endif
+
 #include <stdio.h>
 #include <vector>
 #include <deque>
@@ -12,7 +19,7 @@ using namespace std;
 s_ppi_video_for_disp dispFilePkg[DISP_BUF_NUM];
 FILE * datafile_header;
 s_ppi_video_for_disp * dispbuf = dispFilePkg;
-char* filename1 = "/home/soledad/scripts/Qt_OpenGl/Radar_PPI/radar1";
+char* filename1 = "/Users/wangbo1/scripts/Qt_OpenGl/Radar_PPI/radar1";
 vector<deque<Point3i> > bitplane(2);
 
 bool radarDataInput(char * filename);
