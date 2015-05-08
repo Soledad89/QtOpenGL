@@ -4,7 +4,14 @@
 #ifndef GLWIDGET27_H
 #define GLWIDGET27_H
 
-#include <GL/glu.h>
+#ifdef __APPLE__
+    #include <GLUT/glut.h> // OS X version of GLUT
+#elif _WIN32
+    #include <GL/glut.h> // Windows FreeGlut equivalent
+#else
+    #include <GL/glut.h> // Windows FreeGlut equivalent
+#endif
+
 #include "glwidget.h"
 
 typedef float GLvector4f[4];
