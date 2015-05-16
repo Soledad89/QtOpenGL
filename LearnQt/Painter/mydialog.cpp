@@ -44,20 +44,34 @@ void MyDialog::paintEvent(QPaintEvent *) {
 //    painter.setBrush(linearGradient);
 //    painter.drawRect(100,100,200,100); //绘制矩形,线性渐变线正好在矩形的水平中心线上
 
-    QPainterPath path;
-    path.addEllipse(100,100,50,50); path.lineTo(200,200);
-    QPainter painter(this); painter.setPen(Qt::green); painter.setBrush(Qt::yellow);
-    painter.drawPath(path);
+//    QPainterPath path;
+//    path.addEllipse(100,100,50,50); path.lineTo(200,200);
+//    QPainter painter(this);
+//    painter.setPen(Qt::green);
+//    painter.setBrush(Qt::yellow);
+//    painter.drawPath(path);
 
-    QPainterPath path2;
-    path2.addPath(path);
-    path2.translate(100,0);
-    painter.drawPath(path2);
+//    QPainterPath path2;
+//    path2.addPath(path);
+//    path2.translate(100,0);
+//    painter.drawPath(path2);
 
 
-    QPainterPath path3;
-    path3.lineTo(100,100);
-    path3.lineTo(200,100);
+//    QPainterPath path3;
+//    path3.lineTo(100,100);
+//    path3.lineTo(200,100);
 
-    painter.drawPath(path3);
+//    painter.drawPath(path3);
+//    QPainter painter(this);
+//    QPixmap pix;
+//    pix.load("images/logo.jpg");
+//    painter.drawPixmap(0,0,100,100,pix);
+
+    QPainter painter(this);
+    painter.setBrush(Qt::yellow);
+    painter.drawRect(0,0,50,50);
+    painter.translate(100,100); //将点(100,100)设为原点 painter.setBrush(Qt::red);
+    painter.drawRect(0,0,50,50);
+    painter.translate(-100,-100);
+    painter.drawLine(0,0,20,20);
 }
