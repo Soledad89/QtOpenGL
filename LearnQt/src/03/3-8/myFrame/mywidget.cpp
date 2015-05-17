@@ -7,8 +7,8 @@ MyWidget::MyWidget(QWidget *parent) :
     ui(new Ui::MyWidget)
 {
     ui->setupUi(this);
-    ui->label->setPixmap(QPixmap("F:/logo.png"));
-    QMovie *movie = new QMovie("F:/donghua.gif");
+    ui->label->setPixmap(QPixmap("/Users/wangbo1/scripts/Qt_OpenGl/LearnQt/src/03/3-8/logo.png"));
+    QMovie *movie = new QMovie("/Users/wangbo1/scripts/Qt_OpenGl/LearnQt/src/03/3-8/donghua.gif");
 
     // 在标签中添加动画
     ui->label->setMovie(movie);

@@ -99,7 +99,7 @@
    <property name="smallDecimalPoint">
     <bool>true</bool>
    </property>
-   <property name="numDigits">
+   <property name="digitCount">
     <number>7</number>
    </property>
    <property name="value" stdset="0">
@@ -119,15 +119,15 @@
     <enum>QFrame::Box</enum>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page_3">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>100</width>
-      <height>30</height>
+      <width>149</width>
+      <height>187</height>
      </rect>
     </property>
     <attribute name="label">
@@ -139,8 +139,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>100</width>
-      <height>30</height>
+      <width>149</width>
+      <height>187</height>
      </rect>
     </property>
     <attribute name="label">
@@ -153,7 +153,7 @@
       <x>0</x>
       <y>0</y>
       <width>149</width>
-      <height>211</height>
+      <height>187</height>
      </rect>
     </property>
     <attribute name="label">

@@ -15,6 +15,7 @@ public:
     explicit MyWidget(QWidget *parent = 0);
     ~MyWidget();
 
+
 private:
     Ui::MyWidget *ui;
 };

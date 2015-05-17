@@ -34,6 +34,7 @@ void MyWidget::on_pushButton_clicked()
 
     // 如果按下了“进入主窗口”按钮，则再次显示主界面
     // 否则，因为现在已经没有显示的界面了，所以程序将退出
-    if(dlg.exec()== QDialog::Accepted) show();
+    if(dlg.exec()== QDialog::Accepted)
+        dlg.show();
 
 }
