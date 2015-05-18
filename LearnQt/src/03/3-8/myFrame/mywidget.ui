@@ -29,7 +29,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QLabel" name="label_2">
@@ -67,8 +67,8 @@
     <rect>
      <x>40</x>
      <y>100</y>
-     <width>121</width>
-     <height>111</height>
+     <width>291</width>
+     <height>141</height>
     </rect>
    </property>
    <property name="text">
@@ -119,7 +119,7 @@
     <enum>QFrame::Box</enum>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page_3">
     <property name="geometry">
@@ -177,7 +177,7 @@
     <enum>QFrame::Sunken</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>2</number>
    </property>
    <property name="midLineWidth">
     <number>10</number>

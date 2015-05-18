@@ -66,7 +66,7 @@ public:
         stackedWidget->addWidget(page_2);
         label = new QLabel(MyWidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(40, 100, 121, 111));
+        label->setGeometry(QRect(40, 100, 291, 141));
         label->setScaledContents(false);
         label->setAlignment(Qt::AlignCenter);
         label->setWordWrap(false);
@@ -98,7 +98,7 @@ public:
         frame->setGeometry(QRect(40, 10, 120, 80));
         frame->setFrameShape(QFrame::Box);
         frame->setFrameShadow(QFrame::Sunken);
-        frame->setLineWidth(5);
+        frame->setLineWidth(2);
         frame->setMidLineWidth(10);
         listWidget = new QListWidget(MyWidget);
         new QListWidgetItem(listWidget);
@@ -109,8 +109,8 @@ public:
         retranslateUi(MyWidget);
         QObject::connect(listWidget, SIGNAL(currentRowChanged(int)), stackedWidget, SLOT(setCurrentIndex(int)));
 
-        stackedWidget->setCurrentIndex(1);
-        toolBox->setCurrentIndex(0);
+        stackedWidget->setCurrentIndex(0);
+        toolBox->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(MyWidget);
