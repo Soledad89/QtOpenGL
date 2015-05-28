@@ -9,7 +9,6 @@ MyWidget::MyWidget(QWidget *parent) :
 {
     ui->setupUi(this);
 
-   /*
 
     // 水平布局管理器
 
@@ -31,20 +30,20 @@ MyWidget::MyWidget(QWidget *parent) :
 
     // 栅格布局管理器
 
-    QGridLayout *layout = new QGridLayout;
+//    QGridLayout *layout = new QGridLayout;
 
-    // 添加部件，从第0行0列开始，占据1行2列
-    layout->addWidget(ui->fontComboBox,0,0,1,2);
+//    // 添加部件，从第0行0列开始，占据1行2列
+//    layout->addWidget(ui->fontComboBox,0,0,1,2);
 
-    // 添加部件，从第0行2列开始，占据1行1列
-    layout->addWidget(ui->pushButton,0,2,1,1);
+//    // 添加部件，从第0行2列开始，占据1行1列
+//    layout->addWidget(ui->pushButton,0,2,1,1);
 
-    // 添加部件，从第1行0列开始，占据1行3列
-    layout->addWidget(ui->textEdit,1,0,1,3);
+//    // 添加部件，从第1行0列开始，占据1行3列
+//    layout->addWidget(ui->textEdit,1,0,1,3);
 
-    setLayout(layout);
+//    setLayout(layout);
 
-   */
+
 
     // 让文本编辑器隐藏，也可以使用setVisible(false)函数
     ui->textEdit->hide();

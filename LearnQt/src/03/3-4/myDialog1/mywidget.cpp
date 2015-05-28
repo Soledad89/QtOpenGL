@@ -18,7 +18,10 @@ MyWidget::~MyWidget()
 
 void MyWidget::showChildDialog()
 {
+    close();
     QDialog *dialog = new QDialog(this);
     dialog->show();
+    show();
+    //dialog->close();
 }
 
