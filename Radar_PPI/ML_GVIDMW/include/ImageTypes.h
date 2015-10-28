@@ -1,0 +1,3 @@
+#pragma once
+
+enum IMAGE_TYPE { IMAGE_BMP = 0, IMAGE_JPG, IMAGE_PNG, IMAGE_TGA, IMAGE_PCX };
