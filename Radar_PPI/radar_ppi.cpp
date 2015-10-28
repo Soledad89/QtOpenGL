@@ -1,13 +1,13 @@
 
 #ifdef __APPLE__
     #include <GLUT/glut.h> // OS X version of GLUT
-    #define RADA1FILEPATH "/Users/wangbo1/scripts/QtOpenGl/Radar_PPI/radar1"
+    #define RADA1FILEPATH "/Users/wangbo1/scripts/QtOpenGL/Radar_PPI/radar1"
 #elif _WIN32
     #include <GL/glut.h> // Windows FreeGlut equivalent
-    #define RADA1FILEPATH "/home/soledad/scripts/QtOpenGl/Radar_PPI/radar1"
+    #define RADA1FILEPATH "/home/soledad/scripts/QtOpenGL/Radar_PPI/radar1"
 #else
     #include <GL/glut.h> // Windows FreeGlut equivalent
-    #define RADA1FILEPATH "/home/soledad/scripts/QtOpenGl/Radar_PPI/radar1"
+    #define RADA1FILEPATH "/home/soledad/scripts/QtOpenGL/Radar_PPI/radar1"
 #endif
 
 #include <stdio.h>
@@ -43,6 +43,7 @@ Radar_PPI::Radar_PPI(int timerInterval, QWidget *parent)
 
     setWindowTitle(tr("Radar PPI Display"));
     setFixedSize(1200,1200);
+    this->setWindowFlags(Qt::FramelessWindowHint);
 }
 
 void Radar_PPI::initializeGL()

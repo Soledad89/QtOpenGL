@@ -11,10 +11,25 @@ QT += opengl
 # Input
 HEADERS += glwidget.h \
            radar_ppi.h \ 
-    global.h
+    CPPI.h \
+    CDataPool.h \
+    ppidef.h \
+    ML_GVIDMW_sys.h \
+    ML_GVIDMW.h \
+    bmp.h \
+    ppidef.h \
+    mycolor.h \
+    CDataPool.h \
+    Myglobal.h
 SOURCES += glwidget.cpp \
            radar_ppi.cpp \
-           main.cpp
+           main.cpp \
+    CRadarDisplay.cpp \
+    CPPI.cpp \
+    CDataPool.cpp \
+    ML_GVIDMW.cpp \
+    bmp.cpp \
+    mycolor.cpp
 RESOURCES +=
 
 DESTDIR = ./
