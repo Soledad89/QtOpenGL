@@ -35,7 +35,7 @@ GLWidget10::GLWidget10(int timeInterval, QWidget *parent)
 
 void GLWidget10::loadTriangles()
 {
-    QFile file("/home/soledad/scripts/Qt_OpenGl/NeHe_Qt_OpenGL/GLWidget/data/world.txt");
+    QFile file(":/data/world.txt");
     if (file.open(QFile::ReadOnly)) {
         QTextStream textStream(&file);
         Vertex v[3];

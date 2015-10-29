@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 2.8.1, 2015-10-29T11:36:09. -->
+<!-- Written by QtCreator 2.8.1, 2015-10-29T13:10:38. -->
 <qtcreator>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -37,7 +37,7 @@
    <value type="int" key="EditorConfiguration.TabKeyBehavior">0</value>
    <value type="int" key="EditorConfiguration.TabSize">8</value>
    <value type="bool" key="EditorConfiguration.UseGlobal">true</value>
-   <value type="int" key="EditorConfiguration.Utf8BomBehavior">1</value>
+   <value type="int" key="EditorConfiguration.Utf8BomBehavior">0</value>
    <value type="bool" key="EditorConfiguration.addFinalNewLine">true</value>
    <value type="bool" key="EditorConfiguration.cleanIndentation">true</value>
    <value type="bool" key="EditorConfiguration.cleanWhitespace">true</value>
@@ -51,9 +51,9 @@
  <data>
   <variable>ProjectExplorer.Project.Target.0</variable>
   <valuemap type="QVariantMap">
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">桌面</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">桌面</value>
-   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{dae7741a-906a-48ba-8b97-a1601b215820}</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">Qt 4.8.4(Qt4)</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">Qt 4.8.4(Qt4)</value>
+   <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">{a3903f6e-a0e2-4742-ac6d-734cabf8ea61}</value>
    <value type="int" key="ProjectExplorer.Target.ActiveBuildConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveDeployConfiguration">0</value>
    <value type="int" key="ProjectExplorer.Target.ActiveRunConfiguration">0</value>
@@ -113,7 +113,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">2</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/home/soledad/scripts/QtOpenGL/Texture/build-textures-桌面-Debug</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/home/soledad/scripts/QtOpenGL/2Dand3DRender</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <valuemap type="QVariantMap" key="ProjectExplorer.Target.BuildConfiguration.1">
@@ -172,7 +172,7 @@
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4BuildConfiguration</value>
     <value type="int" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration">0</value>
-    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/home/soledad/scripts/QtOpenGL/Texture/build-textures-桌面-Release</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory">/home/soledad/build-2Dand3DRender-Qt_4_8_4_Qt4-Release</value>
     <value type="bool" key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild">true</value>
    </valuemap>
    <value type="int" key="ProjectExplorer.Target.BuildConfigurationCount">2</value>
@@ -224,11 +224,11 @@
     </valuelist>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">textures</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">2Dand3DRender</value>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/soledad/scripts/QtOpenGL/Texture/textures/textures.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:/home/soledad/scripts/QtOpenGL/2Dand3DRender/2Dand3DRender.pro</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
-    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">textures.pro</value>
+    <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">2Dand3DRender.pro</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseDyldImageSuffix">false</value>
     <value type="bool" key="Qt4ProjectManager.Qt4RunConfiguration.UseTerminal">false</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.UserWorkingDirectory"></value>

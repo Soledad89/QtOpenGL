@@ -1,4 +1,4 @@
-#ifndef RADAR_PPI_H
+﻿#ifndef RADAR_PPI_H
 #define RADAR_PPI_H
 
 #include "glwidget.h"
@@ -13,6 +13,7 @@ protected:
     virtual void resizeGL( int width, int height );
     virtual void paintGL();
     virtual void timeOut();
+    //virtual void paintEvent(QPaintEvent *);
 
 private:
 
